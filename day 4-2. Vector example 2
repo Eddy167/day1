@@ -9,11 +9,24 @@ int main()
 {
 	vector<int>::const_iterator iter;
 	
+	cout << "Creating a 10 element vector to hold scores.\n";
+	vector<int> scores(10, 0); //initialize all 10 elements to 0
+	cout << "Vector size is :" << scores.size() << endl;
+	cout << "Vector capacity is:" << scores.capacity() << endl;
+	cout << "Adding a score.\n";
+	scores.push_back(0); //memory is reallocated to accommodate growth
+	cout << "Vector size is :" << scores.size() << endl;
+	cout << "Vector capacity is:" << scores.capacity() << endl;
+	cout << "Reserving more memory.\n";
+	scores.reserve(20); //reserve memory for 10 additional elements
+	cout << "Vector size is :" << scores.size() << endl;
+	cout << "Vector capacity is:" << scores.capacity() << endl;
+	
 	cout << "Creating a list of sources.";
-	vector<int> scores;
 	scores.push_back(1500);
 	scores.push_back(3500);
 	scores.push_back(7500);
+
 
 	cout << "\nHigh Scores: \n";
 	for (iter = scores.begin(); iter != scores.end(); iter++)
@@ -38,7 +51,6 @@ int main()
 	cout << "\nRandomizing scores.";
 	srand(static_cast<unsigned int>(time(0)));
 	random_shuffle(scores.begin(), scores.end());
-
 	cout << "\nHigh Scores:\n";
 	for (iter = scores.begin(); iter != scores.end(); ++iter)
 	{
@@ -52,6 +64,6 @@ int main()
 	{
 		cout << *iter << endl;
 	}
-	
+
 	return 0;
 }
